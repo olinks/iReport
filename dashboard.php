@@ -1,6 +1,10 @@
-<?php include_once("includes/components/head.php") ?>
 <?php session_start(); ?>
+<?php include_once("includes/components/head.php") ?>
 <?php include_once("includes/php/connect/db.php") ?>
+<?php include_once("includes/php/connect/db.php") ?>
+<?php if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+} ?>
 
 <body class="crm_body_bg">
     <?php include_once("includes/components/sidebar.php") ?>
@@ -18,4 +22,4 @@
             include('includes/components/dashboard.php');
         }
         ?>
-        <?php include_once("includes/components/footer.php") ?>
+        <?php include_once("includes/components/footer.php"); ?>

@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: *");
 
 $host = "localhost";
 $user = "root";
-$password = "password";
+$password = "";
 $dbname = "crime";
 
-$con = new mysqli($host, $user, $password, $dbname);
+$conn = new mysqli($host, $user, $password, $dbname);

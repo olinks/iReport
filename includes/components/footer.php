@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="footer_iner text-center">
-                    <p>2020 © Influence - Designed by <a href="#"> <i class="ti-heart"></i> </a><a href="#"> DashboardPack</a></p>
+                    <p><?php echo date('Y'); ?> © Olinkstech - Designed by <a href="#"> <i class="ti-heart"></i> </a><a href="#"> Olinkstech</a></p>
                 </div>
             </div>
         </div>
@@ -123,7 +123,6 @@
     </a>
 </div>
 
-<script src="assets/js/jquery1-3.4.1.min.js"></script>
 
 <script src="assets/js/popper1.min.js"></script>
 

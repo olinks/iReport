@@ -1,3 +1,4 @@
+<?php include_once("includes/php/connect/db.php"); ?>
 <div class="main_content_iner overly_inner ">
     <div class="container-fluid p-0 ">
 
@@ -11,87 +12,93 @@
                             <li class="breadcrumb-item active">Report</li>
                         </ol>
                     </div>
-                    <!-- <div class="page_title_right">
-                        <div class="page_date_button">
-                            March 1, 2023 - March 31, 2023
-                        </div>
-                        <div class="dropdown common_bootstrap_button ">
-                            <span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                action
-                            </span>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item f_s_16 f_w_600" href="#"> Download</a>
-                                <a class="dropdown-item f_s_16 f_w_600" href="#"> Print</a>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
         <div class="row d-flex justify-content-center">
             <div class="col-lg-8 align align-centre">
-                <div class="white_card card_height_100 mb_30">
+                <div class="white_card card_height_100 mb_30 border">
                     <div class="white_card_header">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0">Horizontal form</h3>
+                                <h3 class="m-0">Report Crime</h3>
                             </div>
                         </div>
                     </div>
                     <div class="white_card_body">
                         <h6 class="card-subtitle mb-2">Report crimes happening close to you</h6>
-                        <form>
+                        <form class="" name="report_form" id="report_form" method="POST">
                             <div class="row mb-3">
-                                <label for="inputEmail3" class="form-label col-sm-4 col-form-label">Email</label>
+                                <label for="inputEmail3" class="form-label col-sm-4 col-form-label">Type of Crime</label>
                                 <div class="col-sm-8">
-                                    <input type="email" class="form-label form-control" id="inputEmail3" placeholder="Email">
+                                    <div class="common_select">
+                                        <select class="nice_Select wide mb_30" id="crime_type" name="crime_type">
+                                            <option value="">Select Type Of Crime</option>
+                                            <?php
+                                            $sql = "SELECT * FROM crimes WHERE status='1'";
+                                            $crimes = $conn->query($sql);
+                                            while ($row = $crimes->fetch_assoc()) {
+                                                echo '<option value="' . $row['id'] . '">' . $row['crime'] . '</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="inputPassword3" class="form-label col-sm-4 col-form-label">Password</label>
+                                <label for="crime_description" class="form-label col-sm-4 col-form-label">Crime Description</label>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                    <textarea type="text" class="form-label form-control" id="crime_description" name="crime_description" placeholder="Describe the Crime"></textarea>
                                 </div>
                             </div>
-                            <fieldset class="mb-3">
-                                <div class="row">
-                                    <div class="col-form-label col-sm-4 pt-0">Radios</div>
-                                    <div class="col-sm-8">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked="">
-                                            <label class="form-label form-check-label" for="gridRadios1">
-                                                First radio
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                            <label class="form-label form-check-label" for="gridRadios2">
-                                                Second radio
-                                            </label>
-                                        </div>
-                                        <div class="form-check disabled">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled="">
-                                            <label class="form-label form-check-label" for="gridRadios3">
-                                                Third disabled radio
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <div class=" row">
-                                <div class="col-sm-4">Checkbox</div>
+                            <div class="row mb-3">
+                                <label for="crime_axis" class="form-label col-sm-4 col-form-label">Crime Axis</label>
                                 <div class="col-sm-8">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                        <label class="form-label form-check-label" for="gridCheck1">
-                                            Example checkbox
-                                        </label>
-                                    </div>
+                                    <select class="nice_Select wide mb_30" id="crime_axis" name="crime_axis">
+                                        <option value="">Select Axis</option>
+                                        <?php
+                                        $sql = "SELECT * FROM location WHERE status='1'";
+                                        $crimes = $conn->query($sql);
+                                        while ($row = $crimes->fetch_assoc()) {
+                                            echo '<option value="' . $row['location_id'] . '">' . $row['location_name'] . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="crime_location" class="form-label col-sm-4 col-form-label">Crime Location</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-label form-control" id="crime_location" name="crime_location" placeholder="Location of Crime">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="crime_victim" class="form-label col-sm-4 col-form-label">Crime Victim (<i>if available</i>)</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-label form-control" id="crime_victim" name="crime_victim" placeholder="Victim">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="crime_suspect" class="form-label col-sm-4 col-form-label">Crime Suspect (<i>if available</i>) </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-label form-control" id="crime_suspect" name="crime_suspect" placeholder="Suspect">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="crime_date" class="form-label col-sm-4 col-form-label">Date of Crime</label>
+                                <div class="col-sm-8">
+                                    <input type="date" class="form-label form-control" id="crime_date" name="crime_date" placeholder="Location of Crime">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="crime_time" class="form-label col-sm-4 col-form-label">Time of Crime</label>
+                                <div class="col-sm-8">
+                                    <input type="time" class="form-label form-control" id="crime_time" name="crime_time" value="<?php echo date("h:m:s"); ?>" placeholder="Time of Crime">
                                 </div>
                             </div>
                             <div class=" row">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                    <button type="submit" class="btn btn-primary">Report</button>
                                 </div>
                             </div>
                         </form>
@@ -101,3 +108,38 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#report_form').submit(function(e) {
+            e.preventDefault();
+            confirm("Do you want to Submit..");
+
+            let post_url = "includes/php/scripts/newReport.php";
+            var form_data = $(this).serialize(); //Creates new FormData object
+
+            // Ajax call to PHP script
+            $.ajax({
+                url: post_url,
+                method: 'post',
+                data: form_data,
+                success: function(res) {
+                    console.log(res);
+                    if (res) {
+                        alert("Successfully Reported");
+                    }
+                },
+                error: function(res) {
+                    console.log(res);
+                }
+            })
+            // .done(function(res) {
+            //     if (res == 1) {
+            //         window.location.href = "dashboard?page=";
+            //         // send response here
+            //     } else {
+
+            //     }
+            // });
+        })
+    });
+</script>

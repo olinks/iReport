@@ -12,7 +12,7 @@
     </div>
     <ul id="sidebar_menu">
         <li>
-            <a href="index-2.html" aria-expanded="false">
+            <a href="dashboard.php" aria-expanded="false">
                 <div class="nav_icon_small">
                     <img src="assets/img/menu-icon/dashboard.svg" alt="">
                 </div>
@@ -30,11 +30,11 @@
                     "></i>
                 </div>
                 <div class="nav_title">
-                    <span>New Reports</span>
+                    <span>Report Crime</span>
                 </div>
             </a>
         </li>
-        <li>
+        <!-- <li>
             <a href="index_3.html" aria-expanded="false">
                 <div class="nav_icon_small">
                     <img src="assets/img/menu-icon/3.svg" alt="">
@@ -43,40 +43,41 @@
                     <span>Dark </span>
                 </div>
             </a>
-        </li>
-        <h4 class="menu-text"><span>USERS</span> <i class="fas fa-ellipsis-h"></i> </h4>
-        <li class="">
-            <a class="has-arrow" href="#" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="assets/img/menu-icon/15.svg" alt="">
-                </div>
-                <div class="nav_title">
-                    <span>Manage Users </span>
-                </div>
-            </a>
-            <ul>
-                <li><a href="dashboard.php?page=register_user"><i class="ti-user"></i> Create New User</a></li>
-                <li><a href="dashboard.php?page=">All Users</a></li>
-            </ul>
-        </li>
+        </li> -->
+        <h4 class="menu-text"><span>
+                <hr>
+            </span> <i class="fas fa-ellipsis-h"></i> </h4>
         <li class="">
             <a class="has-arrow" href="#" aria-expanded="false">
                 <div class="nav_icon_small">
                     <img src="assets/img/menu-icon/16.svg" alt="">
                 </div>
                 <div class="nav_title">
-                    <span>Pages</span>
+                    <span>Reports</span>
                 </div>
             </a>
             <ul>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="resister.html">Register</a></li>
-                <li><a href="error_400.html">Error 404</a></li>
-                <li><a href="error_500.html">Error 500</a></li>
-                <li><a href="forgot_pass.html">Forgot Password</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="dashboard.php?page=my_reports">My Reports</a></li>
+                <li><a href="dashboard.php?page=pending_reports">Pending Reports</a></li>
+                <li><a href="dashboard.php?page=approved_reports">Approved Reports</a></li>
             </ul>
         </li>
+        <?php if ($_SESSION['user_role'] == '1') { ?>
+            <li class="">
+                <a class="has-arrow" href="#" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="assets/img/menu-icon/15.svg" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Manage Users </span>
+                    </div>
+                </a>
+                <ul>
+                    <li><a href="dashboard.php?page=register_user"><i class="ti-user p-0"></i> Create New User</a></li>
+                    <li><a href="dashboard.php?page="><i class="ti-user -p-2"></i>All Users</a></li>
+                </ul>
+            </li>
+        <?php } ?>
 
     </ul>
 </nav>

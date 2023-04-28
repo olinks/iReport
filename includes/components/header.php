@@ -10,6 +10,9 @@
                     <div class="slider round open_miniSide"></div>
                 </label>
                 <div class="header_right d-flex justify-content-between align-items-center">
+                    <h3>
+                        <a> Welcome <?php echo $_SESSION['user_fname']; ?> </a>
+                    </h3>
                     <div class="header_notification_warp d-flex align-items-center">
                         <li>
                             <div class="serach_button">
@@ -27,7 +30,10 @@
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <!-- User Bio -->
+
+                        <!-- Notifications -->
+                        <!-- <li>
                             <a class="bell_notification_clicker" href="#"> <img src="assets/img/icon/bell.svg" alt="">
                                 <span>2</span>
                             </a>
@@ -117,22 +123,23 @@
                                 </div>
                             </div>
 
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- Chat icon -->
+                        <!-- <li>
                             <a class="CHATBOX_open" href="#"> <img src="assets/img/icon/msg.svg" alt=""> <span>2</span> </a>
-                        </li>
+                        </li> -->
                     </div>
                     <div class="profile_info">
                         <img src="assets/img/client_img.png" alt="#">
                         <div class="profile_info_iner">
                             <div class="profile_author_name">
-                                <p>Neurologist </p>
-                                <h5>Dr. Robar Smith</h5>
+                                <p>User </p>
+                                <h5><?php echo $_SESSION['user_fname'] . " " . $_SESSION['user_lname']; ?></h5>
                             </div>
                             <div class="profile_info_details">
                                 <a href="#">My Profile </a>
                                 <a href="#">Settings</a>
-                                <a href="#">Log Out </a>
+                                <a href="logout.php">Log Out </a>
                             </div>
                         </div>
                     </div>
