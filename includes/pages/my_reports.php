@@ -63,6 +63,7 @@
                                 <table class="table lms_table_active" id="reports_table" name="reports_table">
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th scope="col">Victim</th>
                                             <th scope="col">Crime</th>
                                             <th scope="col">Priority</th>
@@ -88,6 +89,7 @@
                                         </tr> -->
                                     </tbody>
                                     <tfoot>
+                                        <th></th>
                                         <th scope="col">Victim</th>
                                         <th scope="col">Crime</th>
                                         <th scope="col">Priority</th>
@@ -106,6 +108,7 @@
         </div>
     </div>
 </div>
+<!-- <script src="../php/scripts/Functions.js"></script> -->
 <script>
     $(document).ready(function() {
         var data, info;
@@ -121,52 +124,17 @@
                 info = JSON.parse(res);
                 var status;
                 $.each(info, function(i, r) {
-                    function getCrime(c) {
-                        var crime;
-                        if (c == '1') {
-                            crime = "stealing";
-                        } else if (c == '2') {
-                            crime = "beating";
-                        } else if (c == '3') {
-                            crime = "rape";
-                        } else if (c == '4') {
-                            crime = "cultism";
-                        } else if (c == '5') {
-                            crime = "debt";
-                        } else if (c == '6') {
-                            crime = "conversion";
-                        } else if (c == '7') {
-                            crime = "shooting";
-                        } else if (c == '7') {
-                            crime = "stabing";
-                        } else if (c == '7') {
-                            crime = "robbing";
-                        } else if (c == '7') {
-                            crime = "malpractice";
-                        } else if (c == '7') {
-                            crime = "abuse/volga language";
-                        }
-                        return crime;
-                    }
 
-                    function getStatus(s) {
-                        var status;
-                        if (s == '1') {
-                            status = '<a href="# " class="status_btn yellow_btn">Pending</a>';
-                        } else if (s == '2') {
-                            status = '<a href="# " class="status_btn ">Processed</a>';
-                        }
-                        return status
-                    }
                     $('#reports_table').append(
                         "<tr>" +
+                        "<td> #RP-" + r['id'] + "</td>" +
                         "<td>" + r['victim'] + "</td>" +
                         "<td>" + getCrime(r['crime_id']) + "</td>" +
                         "<td>" + r['priority'] + "</td>" +
                         "<td>" + r['crime_commit_report_date'] + "</td>" +
                         "<td>" + r['crime_commit_report_time'] + "</td>" +
                         "<td>" + r['location'] + "</td>" +
-                        "<td>" + r['crime_axis'] + "</td>" +
+                        "<td>" + getAxis(r['crime_axis']) + "</td>" +
                         "<td>" + getStatus(r['status']) + "</td>" +
                         "</tr>"
                     );

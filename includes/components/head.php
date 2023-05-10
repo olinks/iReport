@@ -41,4 +41,6 @@
     <link rel="stylesheet" href="assets/css/style1.css" />
     <link rel="stylesheet" href="assets/css/colors/default.css" id="colorSkinCSS">
     <script src="assets/js/jquery1-3.4.1.min.js"></script>
+    <script src="assets/js/Functions.js"></script>
+
 </head>

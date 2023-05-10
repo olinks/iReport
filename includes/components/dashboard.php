@@ -1,4 +1,5 @@
 <?php include_once("includes/php/connect/db.php") ?>
+<?php include_once("includes/php/scripts/functions.php") ?>
 <div class="main_content_iner overly_inner ">
     <div class="container-fluid p-0 ">
 
